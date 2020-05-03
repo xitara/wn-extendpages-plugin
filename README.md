@@ -1,7 +1,7 @@
 # ExtendPages Plugin
 **Read english version below!**
 
-## Deutsche Version
+## Deutsche README
 
 Dieses Plugin erweitert das Static-Pages Plugin um eine Vorspann-Funktion
 
@@ -21,11 +21,9 @@ Für die Konfiguration sind zwei Werte erforderlich:
 * Menü -> Das gewünschte Menü, das weiter oben angelegt wurde
 * Max. Zeichen -> maximale Anzahl der Zeichen des Inhaltes, die angezeigt werden.
 
-
 ---
 
-
-## English version
+## English README
 This plugin extends static pages with an index with a list-component
 
 **Comming soon**
