@@ -39,7 +39,6 @@ class DisplayIntro extends ComponentBase
         $introItems = $this->introItems();
         $this->page['introName'] = $introItems['name'];
         $this->page['introItems'] = $introItems['items'];
-        // $this->page['items'] = $introItems['items1'];
     }
 
     public function getCodeOptions()
@@ -67,21 +66,30 @@ class DisplayIntro extends ComponentBase
         $items = $menu->generateReferences($this->page);
         $menuName = $menu->name;
 
+        if (class_exists('\\RainLab\\Translate\\Classes\\Translator')) {
+            $translator = \RainLab\Translate\Classes\Translator::instance();
+        }
+
         $router = new Router($theme);
         $introItems = [];
         foreach ($items as $item) {
             if (!strlen($item->url)) {
-                $item->url = '/';
+                $url = '/';
+            } else {
+                $url = $item->url;
             }
 
-            $page = $router->findByUrl(parse_url($item->url, PHP_URL_PATH));
+            if (isset($translator)) {
+                $url = parse_url($item->url, PHP_URL_PATH);
+                $url = preg_replace('#^/' . $translator->getLocale() . '/#', '/', $url);
+                $url = preg_replace('#^/' . $translator->getDefaultLocale() . '/#', '/', $url);
+            }
 
-            // var_dump($item->url);
-            // var_dump($page);
-            // var_dump($page->attributes['placeholders']);
-            // var_dump($page->viewBag);
-            // var_dump($page);
-            // exit;
+            $page = $router->findByUrl($url);
+
+            if ($page === null) {
+                continue;
+            }
 
             $intro = $page->placeholders['intro'] ?? $page->parsedMarkup;
             if ($intro == '') {
