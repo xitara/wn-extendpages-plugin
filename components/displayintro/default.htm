@@ -1,0 +1,12 @@
+<section>
+    <h2>{{ introName }}</h2>
+    {% for item in introItems %}
+        <article>
+            <h3>{{ item.title }}</h3>
+            <article>
+                {{ item.intro|raw }}
+            </article>
+            <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+        </article>
+    {% endfor %}
+</section>
