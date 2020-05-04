@@ -4,7 +4,11 @@
         <article>
             <h3>{{ item.title }}</h3>
             <article>
-                {{ item.intro|raw }}
+                {% if introMaxItems and introMaxItems > 0 %}
+                    {{ str_limit(item.intro|raw, introMaxItems) }}
+                {% else %}
+                    {{ item.intro|raw }}
+                {% endif %}
             </article>
             <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
         </article>

@@ -39,6 +39,7 @@ class DisplayIntro extends ComponentBase
         $introItems = $this->introItems();
         $this->page['introName'] = $introItems['name'];
         $this->page['introItems'] = $introItems['items'];
+        $this->page['introMaxItems'] = $this->property('maxChars');
     }
 
     public function getCodeOptions()
