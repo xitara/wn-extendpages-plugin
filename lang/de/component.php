@@ -1,5 +1,9 @@
 <?php
 return [
+    'displayintro' => [
+        'name' => 'Seiten-Intros anzeigen',
+        'description' => 'Zeigt Intros von Seiten die einen Platzhalter "intro" besitzen und in einem Menü konfiguriert sind',
+    ],
     'code' => [
         'title' => 'Menü',
         'description' => 'Menü, dessen Seiten in der Liste angezeigt werden',

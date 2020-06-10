@@ -13,6 +13,10 @@ use System\Classes\PluginManager;
  */
 class Plugin extends PluginBase
 {
+    public $require = [
+        'RainLab.Pages',
+    ];
+
     /**
      * Returns information about this plugin.
      *
@@ -80,6 +84,13 @@ class Plugin extends PluginBase
      * @return array
      */
     public function registerComponents()
+    {
+        return [
+            'Xitara\ExtendPages\Components\DisplayIntro' => 'displayIntro',
+        ];
+    }
+
+    public function registerPageSnippets()
     {
         return [
             'Xitara\ExtendPages\Components\DisplayIntro' => 'displayIntro',

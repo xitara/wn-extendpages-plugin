@@ -10,8 +10,8 @@ class DisplayIntro extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'DisplayIntro Component',
-            'description' => 'No description provided yet...',
+            'name' => 'xitara.extendpages::component.displayintro.name',
+            'description' => 'xitara.extendpages::component.displayintro.description',
         ];
     }
 
@@ -56,6 +56,11 @@ class DisplayIntro extends ComponentBase
         return $result;
     }
 
+    /**
+     * gets placeholder "intro" from subpages and display them
+     *
+     * @return array menu-name and list with intro-texts
+     */
     public function introItems()
     {
         if (!strlen($this->property('code'))) {
