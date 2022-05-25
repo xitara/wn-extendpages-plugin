@@ -1,5 +1,5 @@
 {
-    "name": "kuse/wn-extendpages-plugin",
+    "name": "xitara/wn-extendpages-plugin",
     "type": "winter-plugin",
     "description": "Extends Static Pages plugin for Winter CMS",
     "keywords": ["winter", "cms", "extendpages", "static", "pages", "plugin"],
