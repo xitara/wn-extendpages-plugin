@@ -1,0 +1,19 @@
+{
+    "name": "kuse/wn-extendpages-plugin",
+    "type": "winter-plugin",
+    "description": "Extends Static Pages plugin for Winter CMS",
+    "keywords": ["winter", "cms", "extendpages", "static", "pages", "plugin"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Manuel Burghammer",
+            "email": "mb@xitara.com",
+            "role": "Author"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "composer/installers": "~1.0",
+        "fakerphp/faker": "^1.13"
+    }
+}
