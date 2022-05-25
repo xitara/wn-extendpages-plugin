@@ -1,16 +1,26 @@
 <section class="extendpages-displayintro">
-    <h2>{{ introName }}</h2>
-    {% for item in introItems %}
+{# --> {{ var_dump(isHeading) }} -- <br> #}
+
+    {% if isHeading == 1 %}
+        <h2>{{ name }}</h2>
+    {% endif %}
+    {% for item in items %}
         <article>
-            <h3>{{ item.title }}</h3>
+            {% if isSubHeading == 1 %}
+                <h3>{{ item.title }}</h3>
+            {% endif %}
             <article>
-                {% if introMaxItems and introMaxItems > 0 %}
-                    {{ str_limit(item.intro|raw, introMaxItems) }}
+                {% if maxItems and maxItems > 0 %}
+                    {{ str_limit(item.intro|raw, maxItems) }}
                 {% else %}
                     {{ item.intro|raw }}
                 {% endif %}
             </article>
-            <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+            {% if moreLinkTitle|trim == ''  %}
+                <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+            {% else %}
+                <a href="{{ item.url }}" title="{{ moreLinkTitle }}">{{ moreLinkTitle }}</a>
+            {% endif %}
         </article>
     {% endfor %}
 </section>

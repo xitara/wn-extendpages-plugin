@@ -10,7 +10,7 @@ class DisplayIntro extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'xitara.extendpages::component.displayintro.name',
+            'name'        => 'xitara.extendpages::component.displayintro.name',
             'description' => 'xitara.extendpages::component.displayintro.description',
         ];
     }
@@ -18,28 +18,48 @@ class DisplayIntro extends ComponentBase
     public function defineProperties()
     {
         return [
-            'code' => [
-                'title' => 'xitara.extendpages::component.code.title',
+            'code'          => [
+                'title'       => 'xitara.extendpages::component.code.title',
                 'description' => 'xitara.extendpages::component.code.description',
-                'type' => 'dropdown',
+                'type'        => 'dropdown',
             ],
-            'maxChars' => [
-                'title' => 'xitara.extendpages::component.maxchars.title',
-                'description' => 'xitara.extendpages::component.maxchars.description',
-                'default' => 0,
-                'type' => 'string',
+            'maxChars'      => [
+                'title'             => 'xitara.extendpages::component.maxchars.title',
+                'description'       => 'xitara.extendpages::component.maxchars.description',
+                'default'           => 0,
+                'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'validationMessage' => 'xitara.extendpages::component.maxchars.validationMessage',
+            ],
+            'isHeading'     => [
+                'title'       => 'xitara.extendpages::component.isHeading.title',
+                'description' => 'xitara.extendpages::component.isHeading.description',
+                'type'        => 'checkbox',
+                'default'     => true,
+            ],
+            'isSubHeading'  => [
+                'title'       => 'xitara.extendpages::component.isSubHeading.title',
+                'description' => 'xitara.extendpages::component.isSubHeading.description',
+                'type'        => 'checkbox',
+                'default'     => true,
+            ],
+            'moreLinkTitle' => [
+                'title'       => 'xitara.extendpages::component.moreLinkTitle.title',
+                'description' => 'xitara.extendpages::component.moreLinkTitle.description',
+                'type'        => 'string',
             ],
         ];
     }
 
     public function onRender()
     {
-        $introItems = $this->introItems();
-        $this->page['introName'] = $introItems['name'];
-        $this->page['introItems'] = $introItems['items'];
-        $this->page['introMaxItems'] = $this->property('maxChars');
+        $introItems                  = $this->introItems();
+        $this->page['name']          = $introItems['name'];
+        $this->page['items']         = $introItems['items'];
+        $this->page['maxItems']      = $this->property('maxChars');
+        $this->page['isHeading']     = $this->property('isHeading');
+        $this->page['isSubHeading']  = $this->property('isSubHeading');
+        $this->page['moreLinkTitle'] = $this->property('moreLinkTitle');
     }
 
     public function getCodeOptions()
@@ -67,16 +87,16 @@ class DisplayIntro extends ComponentBase
             return;
         }
 
-        $theme = Theme::getActiveTheme();
-        $menu = PagesMenu::loadCached($theme, $this->property('code'));
-        $items = $menu->generateReferences($this->page);
+        $theme    = Theme::getActiveTheme();
+        $menu     = PagesMenu::loadCached($theme, $this->property('code'));
+        $items    = $menu->generateReferences($this->page);
         $menuName = $menu->name;
 
         if (class_exists('\\RainLab\\Translate\\Classes\\Translator')) {
             $translator = \RainLab\Translate\Classes\Translator::instance();
         }
 
-        $router = new Router($theme);
+        $router     = new Router($theme);
         $introItems = [];
         foreach ($items as $item) {
             if (!strlen($item->url)) {
@@ -104,7 +124,7 @@ class DisplayIntro extends ComponentBase
 
             $introItems[str_slug($item->title)] = [
                 'title' => $page->title,
-                'url' => $item->url,
+                'url'   => $item->url,
                 'intro' => $intro,
                 // 'intro' => $page->viewBag['intro'] ?? $page->parsedMarkup,
             ];
