@@ -15,7 +15,7 @@ folgenden Code in ein Layout einfügen:
 Der Text `Vorspann` wird im Backend als Tab-Überschrift angezeigt und kann beliebig verändert werden.
 Wenn der Vorspanntext nicht direkt auf der Seite erscheinen soll, kann per CSS die Klasse `intro` (dieser Name kann ebenfalls beliebig gewählt werden) auf `display:none` gesetzt werden.
 
-Um eine Übersicht der Intros anzuzeigen, wird ein Menü im Plugin `RainLab.Pages` angelegt und die gewünschten Seiten eingepflegt. Anschliessend werden die Componenten `staticMenu` und `displayIntro` in die gewünschte Seite eingebunden und konfiguriert.
+Um eine Übersicht der Intros anzuzeigen, wird ein Menü im Plugin `Winter.Pages` angelegt und die gewünschten Seiten eingepflegt. Anschliessend werden die Componenten `staticMenu` und `displayIntro` in die gewünschte Seite eingebunden und konfiguriert.
 
 Für die Konfiguration sind zwei Werte erforderlich:
 * Menü -> Das gewünschte Menü, das weiter oben angelegt wurde

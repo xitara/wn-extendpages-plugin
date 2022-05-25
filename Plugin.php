@@ -14,7 +14,7 @@ use System\Classes\PluginManager;
 class Plugin extends PluginBase
 {
     public $require = [
-        'RainLab.Pages',
+        'Winter.Pages',
     ];
 
     /**
@@ -25,11 +25,11 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'xitara.extendpages::lang.plugin.name',
+            'name'        => 'xitara.extendpages::lang.plugin.name',
             'description' => 'xitara.extendpages::lang.plugin.description',
-            'author' => 'Xitara, Manuel Burghammer',
-            'home' => 'https://xitara.net',
-            'icon' => 'icon-files-o',
+            'author'      => 'Xitara, Manuel Burghammer',
+            'home'        => 'https://xitara.net',
+            'icon'        => 'icon-files-o',
         ];
     }
 
@@ -48,16 +48,16 @@ class Plugin extends PluginBase
                     throw new ApplicationException(Lang::get('cms::lang.theme.edit.not_found'));
                 }
 
-                if (PluginManager::instance()->hasPlugin('RainLab.Pages')
-                    && $widget->model instanceof \RainLab\Pages\Classes\Page) {
+                if (PluginManager::instance()->hasPlugin('Winter.Pages')
+                    && $widget->model instanceof \Winter\Pages\Classes\Page) {
 
                     $widget->addFields([
                         'viewBag[intro]' => [
                             'label' => 'xitara.extendpages::pages.label.intro',
-                            'tab' => 'xitara.extendpages::pages.tab.intro',
-                            'span' => 'full',
-                            'type' => 'richeditor',
-                            'size' => 'huge',
+                            'tab'   => 'xitara.extendpages::pages.tab.intro',
+                            'span'  => 'full',
+                            'type'  => 'richeditor',
+                            'size'  => 'huge',
                         ],
                     ], 'primary');
                 }
@@ -108,7 +108,7 @@ class Plugin extends PluginBase
 
         return [
             'xitara.extendpages.some_permission' => [
-                'tab' => 'ExtendPages',
+                'tab'   => 'ExtendPages',
                 'label' => 'Some permission',
             ],
         ];
@@ -125,11 +125,11 @@ class Plugin extends PluginBase
 
         return [
             'extendpages' => [
-                'label' => 'ExtendPages',
-                'url' => Backend::url('xitara/extendpages/mycontroller'),
-                'icon' => 'icon-leaf',
+                'label'       => 'ExtendPages',
+                'url'         => Backend::url('xitara/extendpages/mycontroller'),
+                'icon'        => 'icon-leaf',
                 'permissions' => ['xitara.extendpages.*'],
-                'order' => 500,
+                'order'       => 500,
             ],
         ];
     }
