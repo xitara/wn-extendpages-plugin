@@ -2,8 +2,8 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Theme;
-use RainLab\Pages\Classes\Menu as PagesMenu;
-use RainLab\Pages\Classes\Router;
+use Winter\Pages\Classes\Menu as PagesMenu;
+use Winter\Pages\Classes\Router;
 
 class DisplayIntro extends ComponentBase
 {
@@ -92,8 +92,8 @@ class DisplayIntro extends ComponentBase
         $items    = $menu->generateReferences($this->page);
         $menuName = $menu->name;
 
-        if (class_exists('\\RainLab\\Translate\\Classes\\Translator')) {
-            $translator = \RainLab\Translate\Classes\Translator::instance();
+        if (class_exists('\\Winter\\Translate\\Classes\\Translator')) {
+            $translator = \Winter\Translate\Classes\Translator::instance();
         }
 
         $router     = new Router($theme);
@@ -123,9 +123,10 @@ class DisplayIntro extends ComponentBase
             }
 
             $introItems[str_slug($item->title)] = [
-                'title' => $page->title,
-                'url'   => $item->url,
-                'intro' => $intro,
+                'title'    => $page->title,
+                'filename' => $page->baseFileName,
+                'url'      => $item->url,
+                'intro'    => $intro,
                 // 'intro' => $page->viewBag['intro'] ?? $page->parsedMarkup,
             ];
         }
