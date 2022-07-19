@@ -1,17 +1,15 @@
 <section class="extendpages-displayintro">
-{# --> {{ var_dump(isHeading) }} -- <br> #}
-
     {% if isHeading == 1 %}
         <h2>{{ name }}</h2>
     {% endif %}
     {% for item in items %}
-        <article>
-            {% if isSubHeading == 1 %}
+        <article style="--icon-intro-{{ loop.index }}: url({{ url(('service/' ~ item.filename|slug)|media) }}.svg)">
+            {% if isSubHeading == 1 and item['title'] is defined and item.title != '' %}
                 <h3>{{ item.title }}</h3>
             {% endif %}
             <article>
                 {% if maxItems and maxItems > 0 %}
-                    {{ str_limit(item.intro|raw, maxItems) }}
+                    {{ item.intro|raw|truncate_html(maxItems) }}
                 {% else %}
                     {{ item.intro|raw }}
                 {% endif %}
