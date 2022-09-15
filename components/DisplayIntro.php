@@ -51,11 +51,11 @@ class DisplayIntro extends ComponentBase
         ];
     }
 
-    public function onRender()
+    public function onRun()
     {
         $introItems                  = $this->introItems();
-        $this->page['name']          = $introItems['name'];
-        $this->page['items']         = $introItems['items'];
+        $this->page['name']          = $introItems['name'] ?? null;
+        $this->page['items']         = $introItems['items'] ?? null;
         $this->page['maxItems']      = $this->property('maxChars');
         $this->page['isHeading']     = $this->property('isHeading');
         $this->page['isSubHeading']  = $this->property('isSubHeading');
@@ -117,7 +117,7 @@ class DisplayIntro extends ComponentBase
                 continue;
             }
 
-            $intro = $page->placeholders['intro'] ?? $page->parsedMarkup;
+            $intro = $page->intro ?? $page->placeholders['intro'] ?? $page->parsedMarkup;
             if ($intro == '') {
                 $intro = $page->parsedMarkup;
             }
